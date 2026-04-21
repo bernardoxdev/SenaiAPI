@@ -16,9 +16,10 @@ async def lifespan(app: FastAPI):
     yield
 
 app = FastAPI(
-    title="",
-    summary="",
+    title="SenaiAPI",
+    summary="API Hackathon Senai 2026",
     description="""
+    API Hackathon Senai 2026
     """,
     version="v0.1.0-BETA",
     lifespan=lifespan
