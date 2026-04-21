@@ -7,6 +7,8 @@ from contextlib import asynccontextmanager
 
 from backend.core.limiter import limiter
 from backend.core.database import init_db, create_tables
+from backend.api.ia import router as ia_router
+from backend.api.materials import router as materials_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -47,6 +49,9 @@ async def rate_limit_handler(request, exc):
         status_code=429,
         content={"detail": "Rate limit exceeded"}
     )
+
+app.include_router(ia_router)
+app.include_router(materials_router)
 
 if __name__ == '__main__':
     pass
